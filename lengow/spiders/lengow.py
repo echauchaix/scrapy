@@ -51,7 +51,7 @@ class LengowSpider(scrapy.Spider):
 
     #parse the flow log page to get the last 10 import of the product catalog date and ip
     def parse_flow_page(self, response):
-        flowname = response.css('div.infosflux .title::text').extract()
+        flowname = response.css('div.infosflux .title::text').extract_first()
         for i in range(2,12):
             selectordate = '.divNews > table > tr:nth-child(' + str(i) + ') > td:nth-child(1)::text'
             selectorip = '.divNews > table > tr:nth-child(' + str(i) + ') > td:nth-child(3)::text'
